@@ -1,0 +1,214 @@
+/* Estilos base */
+body {
+  background-color: #000;
+  color: #39ff14; /* Verde neón */
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto CRT (pantalla vieja) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 100;
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+}
+
+/* Efecto de parpadeo */
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  22%,
+  24%,
+  55% {
+    opacity: 0.8;
+  }
+}
+
+.crt-effect {
+  animation: flicker 0.1s infinite;
+}
+
+/* Animación de líneas de escaneo */
+@keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Estilos del encabezado */
+header {
+  border-bottom: 2px solid #ff6ec7; /* Rosa neón */
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #ff6ec7, #00f6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding: 20px 0;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00de, 0 0 20px #ff00de;
+}
+
+/* Contenedor principal */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sección de datos de la NASA */
+#nasa-data {
+  background-color: rgba(30, 30, 30, 0.7);
+  padding: 25px;
+  border-radius: 8px;
+  border: 2px solid #00f6ff; /* Azul neón */
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00f6ff, 0 0 40px #00f6ff;
+  margin-bottom: 40px;
+}
+
+#title {
+  font-family: "Press Start 2P", cursive;
+  color: #ff6ec7; /* Rosa neón */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Imagen */
+#image {
+  width: 100%;
+  height: auto;
+  border: 2px solid #39ff14; /* Verde neón */
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+  margin-bottom: 20px;
+}
+
+/* Fecha */
+#date {
+  color: #00f6ff; /* Azul neón */
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+/* Explicación */
+#explanation {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Pie de página */
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 50px;
+}
+
+footer p:first-child {
+  margin-bottom: 10px;
+}
+
+footer span {
+  color: #39ff14; /* Verde neón */
+}
+
+/* Efecto de glitch (opcional) */
+.glitch-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-layer:hover {
+  opacity: 0.05;
+}
+
+.galaxy {
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.7));
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px 20;
+}
+
+header > h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Apila elementos verticalmente */
+    padding: 10px;
+  }
+
+  .galaxy {
+    width: 60px; /* Tamaño más pequeño en móvil */
+    height: 60px;
+    margin: 10px 0 0 0; /* Espacio arriba, elimina margen derecho */
+    order: 2; /* Posiciona después del título */
+  }
+
+  header > h1 {
+    order: 1; /* Título primero */
+    margin-bottom: 5px;
+    width: 100%; /* Ocupa todo el ancho */
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  #title {
+    font-size: 1.2rem;
+  }
+}
