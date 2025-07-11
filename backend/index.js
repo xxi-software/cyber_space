@@ -2,8 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import nasa_apod from "./routes/nasa_apod.js";
+import { connect } from "./conection/index.js";
 
 dotenv.config();
+connect();
 
 const app = express();
 app.use(cors());

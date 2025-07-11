@@ -1,15 +1,16 @@
-import animatedGsap from "./animated/gsap.js";
+import generarDiapositivas from "./animated/generarDiapositivas.js";
+import pintarDiapositivas from "./animated/pintarDiapositivas.js";
 import getDataNasa from "./functions/getDataNasa.js";
 import setDataNasa from "./functions/setDataNasa.js";
 
-function init() {
+let data = {};
+
+async function init() {
   // Llamada a la función para obtener datos de la NASA
-  const dataNada = getDataNasa();
-  setDataNasa(dataNada);
+  data = await getDataNasa();
+  console.log(data);
+  generarDiapositivas(data);
+  pintarDiapositivas();
 }
 
-function animated() {
-  animatedGsap();
-}
-
-export { init, animated };
+export { init };

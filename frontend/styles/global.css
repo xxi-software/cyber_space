@@ -1,214 +1,167 @@
-/* Estilos base */
-body {
-  background-color: #000;
-  color: #39ff14; /* Verde neón */
-  font-family: "Courier New", monospace;
+* {
   margin: 0;
-  padding: 20px;
-  min-height: 100vh;
-  position: relative;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
   overflow-x: hidden;
+  background-color: #0a0a1a;
+  color: #fff;
 }
 
-/* Efecto CRT (pantalla vieja) */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-  background-size: 100% 4px;
-  z-index: 100;
-  pointer-events: none;
-  animation: scanline 8s linear infinite;
-}
-
-/* Efecto de parpadeo */
-@keyframes flicker {
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
-  100% {
-    opacity: 1;
-  }
-  20%,
-  22%,
-  24%,
-  55% {
-    opacity: 0.8;
-  }
-}
-
-.crt-effect {
-  animation: flicker 0.1s infinite;
-}
-
-/* Animación de líneas de escaneo */
-@keyframes scanline {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
-/* Estilos del encabezado */
-header {
-  border-bottom: 2px solid #ff6ec7; /* Rosa neón */
-  padding-bottom: 20px;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-h1 {
-  font-family: "Press Start 2P", cursive;
-  font-size: 2.5rem;
-  background: linear-gradient(to right, #ff6ec7, #00f6ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  padding: 20px 0;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00de, 0 0 20px #ff00de;
-}
-
-/* Contenedor principal */
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Sección de datos de la NASA */
-#nasa-data {
-  background-color: rgba(30, 30, 30, 0.7);
-  padding: 25px;
-  border-radius: 8px;
-  border: 2px solid #00f6ff; /* Azul neón */
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00f6ff, 0 0 40px #00f6ff;
-  margin-bottom: 40px;
-}
-
-#title {
-  font-family: "Press Start 2P", cursive;
-  color: #ff6ec7; /* Rosa neón */
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-/* Imagen */
-#image {
+.slide {
+  position: relative;
   width: 100%;
-  height: auto;
-  border: 2px solid #39ff14; /* Verde neón */
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
-  margin-bottom: 20px;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* Fecha */
-#date {
-  color: #00f6ff; /* Azul neón */
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-}
-
-/* Explicación */
-#explanation {
-  color: #ccc;
-  line-height: 1.6;
-}
-
-/* Pie de página */
-footer {
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  margin-top: 50px;
-}
-
-footer p:first-child {
-  margin-bottom: 10px;
-}
-
-footer span {
-  color: #39ff14; /* Verde neón */
-}
-
-/* Efecto de glitch (opcional) */
-.glitch-layer {
+.background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: black;
-  opacity: 0;
-  pointer-events: none;
+  object-fit: cover;
+  z-index: 1;
 }
 
-.glitch-layer:hover {
-  opacity: 0.05;
-}
-
-.galaxy {
-  width: 100px;
-  height: 100px;
-  pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.7));
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 10px 20;
-}
-
-header > h1 {
+.content-container {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.explanation {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  white-space: nowrap;
+  z-index: 10;
+  color: #fff;
+  font-size: 1rem;
+  animation: bounce 2s infinite;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 20px;
 }
 
-/* Versión móvil */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column; /* Apila elementos verticalmente */
-    padding: 10px;
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translate(-50%, 0);
   }
-
-  .galaxy {
-    width: 60px; /* Tamaño más pequeño en móvil */
-    height: 60px;
-    margin: 10px 0 0 0; /* Espacio arriba, elimina margen derecho */
-    order: 2; /* Posiciona después del título */
+  40% {
+    transform: translate(-50%, -20px);
   }
-
-  header > h1 {
-    order: 1; /* Título primero */
-    margin-bottom: 5px;
-    width: 100%; /* Ocupa todo el ancho */
+  60% {
+    transform: translate(-50%, -10px);
   }
 }
 
-/* Responsive */
+.title-container {
+  margin-bottom: 30px;
+}
+
+.title-container h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0;
+  color: #ffcc00;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+}
+
+.title-container p {
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ffcc00, #ff5e00);
+  z-index: 100;
+  width: 0%;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #555;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: Arial, sans-serif;
+}
+
+.close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #333;
+  transform: rotate(90deg);
+}
+
 @media (max-width: 768px) {
-  h1 {
+  .content-container {
+    padding: 20px;
+    width: 95%;
+  }
+
+  h2 {
     font-size: 1.8rem;
   }
 
-  #title {
-    font-size: 1.2rem;
+  .explanation {
+    font-size: 1rem;
   }
 }
