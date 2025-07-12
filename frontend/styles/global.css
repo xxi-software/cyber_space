@@ -28,22 +28,6 @@ body {
   z-index: 1;
 }
 
-.content-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 90%;
-  max-width: 800px;
-  padding: 30px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  text-align: center;
-}
-
 h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -151,6 +135,54 @@ h2 {
   transform: rotate(90deg);
 }
 
+#container {
+  position: absolute;
+  width: 80%;
+  max-width: 900px;
+  min-height: 400px;
+  background: rgba(20, 20, 30, 0.85);
+  border: 12px solid rgba(100, 100, 150, 0.5);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  cursor: grab;
+  user-select: none;
+  z-index: 100;
+  /* Centrado inicial */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#container:active {
+  cursor: grabbing;
+  border-color: rgba(150, 150, 200, 0.7);
+}
+
+#container .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  background: rgba(200, 50, 50, 0.7);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 101;
+  transition: all 0.3s ease;
+}
+
+#container .close:hover {
+  background: rgba(220, 70, 70, 0.9);
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   .content-container {
     padding: 20px;
@@ -163,5 +195,118 @@ h2 {
 
   .explanation {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajustar el contenedor principal */
+  #container {
+    width: 90%; /* Más ancho para aprovechar la pantalla */
+    max-width: none; /* Eliminar restricción de ancho máximo */
+    min-height: 300px; /* Reducir altura mínima */
+    padding: 20px; /* Reducir padding */
+    border-width: 8px; /* Borde más delgado */
+    top: 10px; /* Evitar centrado vertical estricto */
+    left: 5%; /* Ajustar posición horizontal */
+    transform: none; /* Eliminar transformación inicial */
+  }
+
+  /* Ajustar el botón de cierre */
+  #container .close {
+    width: 35px; /* Ligeramente más grande para facilitar el toque */
+    height: 35px;
+    font-size: 16px; /* Tamaño de fuente legible */
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Ajustar títulos y texto */
+  .title-container h1 {
+    font-size: 2rem; /* Reducir tamaño del título principal */
+    margin: 20px 0; /* Reducir márgenes */
+  }
+
+  .title-container p {
+    font-size: 1rem; /* Reducir tamaño del texto */
+    margin: 0 15px 20px; /* Ajustar márgenes */
+  }
+
+  h2 {
+    font-size: 1.8rem; /* Tamaño ya definido, se mantiene */
+    margin-bottom: 15px;
+  }
+
+  .explanation {
+    font-size: 0.95rem; /* Ligeramente más pequeño para mejor ajuste */
+    line-height: 1.5;
+  }
+
+  .meta {
+    font-size: 0.8rem; /* Reducir tamaño para metadatos */
+    flex-direction: column; /* Apilar en columna para mejor legibilidad */
+    gap: 10px;
+  }
+
+  /* Ajustar fondo */
+  .background {
+    object-fit: cover; /* Mantener comportamiento */
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ajustar barra de progreso */
+  .progress-bar {
+    height: 4px; /* Reducir grosor */
+  }
+
+  /* Ajustar indicador de scroll */
+  .scroll-indicator {
+    font-size: 0.85rem; /* Reducir tamaño */
+    padding: 8px 15px; /* Reducir padding */
+    bottom: 20px; /* Ajustar posición */
+  }
+
+  /* Ajustar contenedor de contenido */
+  .content-container {
+    padding: 15px; /* Reducir padding */
+    width: 100%; /* Asegurar que ocupe todo el ancho */
+  }
+}
+
+/* Media query adicional para pantallas muy pequeñas (ej. < 480px) */
+@media (max-width: 480px) {
+  #container {
+    width: 95%; /* Más ancho para pantallas pequeñas */
+    padding: 15px; /* Reducir aún más el padding */
+    border-width: 6px; /* Borde más delgado */
+    min-height: 250px; /* Reducir altura mínima */
+  }
+
+  .title-container h1 {
+    font-size: 1.6rem; /* Reducir aún más el título */
+  }
+
+  .title-container p {
+    font-size: 0.9rem; /* Texto más pequeño */
+    margin: 0 10px 15px;
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Reducir tamaño del encabezado */
+  }
+
+  .explanation {
+    font-size: 0.85rem; /* Texto más pequeño */
+  }
+
+  .scroll-indicator {
+    font-size: 0.75rem; /* Reducir tamaño */
+    padding: 6px 12px;
+  }
+
+  .close {
+    width: 30px; /* Ajustar tamaño del botón de cierre */
+    height: 30px;
+    font-size: 14px;
   }
 }
